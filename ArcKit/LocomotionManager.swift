@@ -868,6 +868,12 @@ private extension LocomotionManager {
 }
 
 extension LocomotionManager: CLLocationManagerDelegate {
+
+    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        
+        // forward the delegate event
+        locationManagerDelegate?.locationManager?(manager, didRangeBeacons: beacons, in: region)
+    }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
